@@ -55,39 +55,6 @@ n<template>
         <!-- 右侧：控制面板 -->
         <div class="control-panel">
           <div class="control-section">
-            <h3>图片控制</h3>
-            <div class="zoom-section">
-              <div class="zoom-controls">
-                <label>缩放</label>
-                <button @click="adjustZoom(-1)" class="zoom-btn">-</button>
-                <input 
-                  type="number" 
-                  v-model="zoomPercent" 
-                  @change="updateZoomFromInput"
-                  @blur="updateZoomFromInput"
-                  min="10"
-                  max="500"
-                  step="1"
-                  class="zoom-input"
-                >
-                <span class="zoom-unit">%</span>
-                <button @click="adjustZoom(1)" class="zoom-btn">+</button>
-                <button @click="resetZoom" class="reset-zoom-btn">重置</button>
-              </div>
-              <input 
-                type="range" 
-                v-model.number="zoomPercent" 
-                @input="updateZoomFromInput"
-                min="10"
-                max="500"
-                step="1"
-                class="zoom-slider"
-              >
-            </div>
-            <p class="hint">滚轮缩放 / 拖动画布移动图片</p>
-          </div>
-
-          <div class="control-section">
             <h3>裁剪尺寸</h3>
             <div class="unit-toggle">
               <button 
@@ -130,6 +97,39 @@ n<template>
               <button @click="undo" :disabled="!canUndo" title="撤回 (Ctrl+Z)">↶ 撤回</button>
               <button @click="redo" :disabled="!canRedo" title="前进 (Ctrl+Y)">↷ 前进</button>
             </div>
+          </div>
+
+          <div class="control-section">
+            <h3>图片控制</h3>
+            <div class="zoom-section">
+              <div class="zoom-controls">
+                <label>缩放</label>
+                <button @click="adjustZoom(-1)" class="zoom-btn">-</button>
+                <input 
+                  type="number" 
+                  v-model="zoomPercent" 
+                  @change="updateZoomFromInput"
+                  @blur="updateZoomFromInput"
+                  min="10"
+                  max="500"
+                  step="1"
+                  class="zoom-input"
+                >
+                <span class="zoom-unit">%</span>
+                <button @click="adjustZoom(1)" class="zoom-btn">+</button>
+                <button @click="resetZoom" class="reset-zoom-btn">重置</button>
+              </div>
+              <input 
+                type="range" 
+                v-model.number="zoomPercent" 
+                @input="updateZoomFromInput"
+                min="10"
+                max="500"
+                step="1"
+                class="zoom-slider"
+              >
+            </div>
+            <p class="hint">滚轮缩放 / 拖动画布移动图片</p>
           </div>
 
           <div class="control-section">
