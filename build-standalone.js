@@ -1,7 +1,14 @@
 import fs from 'fs';
+import path from 'path';
 
-const css = fs.readFileSync('dist/assets/index-Bu3_R67a.css', 'utf8');
-const js = fs.readFileSync('dist/assets/index-Bh_l2fdn.js', 'utf8');
+// 自动查找 dist/assets 目录下的 CSS 和 JS 文件
+const assetsDir = 'dist/assets';
+const files = fs.readdirSync(assetsDir);
+const cssFile = files.find(f => f.endsWith('.css'));
+const jsFile = files.find(f => f.endsWith('.js'));
+
+const css = fs.readFileSync(path.join(assetsDir, cssFile), 'utf8');
+const js = fs.readFileSync(path.join(assetsDir, jsFile), 'utf8');
 
 const html = `<!DOCTYPE html>
 <html lang="zh-CN">
